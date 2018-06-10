@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import VideoItem from '../components/VideoItem'
+import VideoItem from './components/VideoItem'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`

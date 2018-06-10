@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { API } from '../contants/config'
 
 const init = {
   data: [],
@@ -40,10 +41,15 @@ const error = (data) => {
 export const fetchVideos = () => {
   return (dispatch) => {
     dispatch(loading())
-    return axios.get('https://s3-ap-southeast-1.amazonaws.com/ysetter/media/video-search.json').then(response => {
+    return axios.get(`${API}/video-search`).then(response => {
       dispatch(success(response.data.items))
     })
-    .catch(response => dispatch(error(response)))
+    .catch(response => {
+      console.log(response)
+      dispatch(error({
+        code : 'SOMETHING_WENT_WRONG'
+      }))
+    })
   }
 }
 
